@@ -1,0 +1,392 @@
+/* ============================================================
+   MediSense Edge — Sidebar Styles (Compact & High-Contrast)
+   Next-Generation Clinical Navigation & NPU Hardware Telemetry
+   ============================================================ */
+
+.sidebar {
+  width: var(--sidebar-w);
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: linear-gradient(180deg, #030914 0%, #050e1f 60%, #030814 100%);
+  border-right: 1px solid var(--bdr-subtle);
+  display: flex;
+  flex-direction: column;
+  padding: 0.55rem 0.75rem 0.45rem;
+  z-index: 100;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-shadow: 4px 0 28px rgba(0, 0, 0, 0.45);
+  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.32s ease;
+}
+
+.sidebar.sidebar-open {
+  transform: translateX(0);
+}
+
+.sidebar.sidebar-closed {
+  transform: translateX(-100%);
+  box-shadow: none;
+  pointer-events: none;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.2);
+  border-radius: var(--r-full);
+}
+
+.sidebar-glow {
+  position: absolute;
+  top: -80px;
+  left: -50px;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, rgba(124, 111, 240, 0.06) 50%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Brand Logo Header & Slide-Close Toggle ── */
+.sidebar-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.15rem 0.25rem 0.45rem;
+  border-bottom: 1px solid var(--bdr-subtle);
+  margin-bottom: 0.45rem;
+  flex-shrink: 0;
+}
+
+.sidebar-logo-link {
+  display: block;
+  text-decoration: none;
+  transition: transform var(--t-spring);
+}
+
+.sidebar-logo-link:hover {
+  transform: translateY(-1px);
+}
+
+.sidebar-logo-link:hover .logo-emblem-wrap svg {
+  transform: scale(1.05) rotate(4deg);
+}
+
+.sidebar-slide-toggle {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--r-xs);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--bdr-subtle);
+  color: var(--txt-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--t-fast);
+  flex-shrink: 0;
+}
+
+.sidebar-slide-toggle:hover {
+  background: rgba(0, 212, 255, 0.15);
+  border-color: rgba(0, 212, 255, 0.45);
+  color: var(--cyan);
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.25);
+}
+
+/* ── Privacy Status Pill ── */
+.privacy-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.22rem 0.65rem;
+  background: rgba(0, 229, 160, 0.09);
+  border: 1px solid rgba(0, 229, 160, 0.26);
+  border-radius: var(--r-full);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--green);
+  margin: 0 0 0.45rem;
+  letter-spacing: 0.02em;
+  box-shadow: 0 0 10px rgba(0, 229, 160, 0.08);
+  backdrop-filter: blur(8px);
+  flex-shrink: 0;
+}
+
+/* ── Navigation Group ── */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.22rem;
+  flex-shrink: 0;
+}
+
+.nav-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0.45rem;
+  margin-bottom: 0.22rem;
+}
+
+.nav-label-group {
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  font-family: var(--mono);
+}
+
+.nav-hotkey-label {
+  font-size: 0.6rem;
+  color: var(--txt-4);
+  font-family: var(--mono);
+  font-weight: 700;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.38rem 0.65rem;
+  border-radius: var(--r-md);
+  text-decoration: none;
+  color: var(--txt-2);
+  transition: all var(--t-fast);
+  position: relative;
+  border: 1px solid transparent;
+  background: transparent;
+  flex-shrink: 0;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--txt-1);
+  border-color: var(--bdr-subtle);
+  transform: translateX(3px);
+}
+
+.nav-active {
+  background: linear-gradient(90deg, rgba(13, 28, 48, 0.95) 0%, rgba(7, 18, 36, 0.85) 100%);
+  border-color: var(--bdr-card);
+  color: var(--txt-1);
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4), 0 0 12px rgba(0, 212, 255, 0.12);
+}
+
+/* Prominent, readable icon badge */
+.nav-item-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid transparent;
+  transition: all var(--t-fast);
+}
+
+.nav-item:hover .nav-item-icon {
+  transform: scale(1.05);
+}
+
+.nav-item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.nav-item-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--txt-1);
+  letter-spacing: -0.01em;
+}
+
+.nav-item-sub-row {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.nav-item-sub {
+  font-size: 0.69rem;
+  color: var(--txt-3);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.15;
+}
+
+.nav-active .nav-item-sub {
+  color: var(--txt-2);
+}
+
+.nav-item-badge {
+  font-size: 0.58rem;
+  font-weight: 700;
+  padding: 0.06rem 0.35rem;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--txt-3);
+  font-family: var(--mono);
+  letter-spacing: 0.03em;
+  transition: all var(--t-fast);
+  flex-shrink: 0;
+}
+
+.nav-active .nav-item-badge {
+  color: #fff;
+}
+
+.nav-keyhint {
+  font-size: 0.62rem;
+  color: var(--txt-4);
+  font-family: var(--mono);
+  font-weight: 700;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.nav-active .nav-keyhint {
+  color: var(--cyan);
+  background: rgba(0, 212, 255, 0.12);
+  border-color: rgba(0, 212, 255, 0.35);
+}
+
+.nav-active-indicator {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3.5px;
+  height: 22px;
+  border-radius: 3px 0 0 3px;
+}
+
+/* ── Snapdragon NPU Co-Processor Card ── */
+.npu-card {
+  margin-top: 0.45rem;
+  padding: 0.5rem 0.65rem;
+  background: rgba(7, 18, 36, 0.88);
+  border: 1px solid var(--bdr-card);
+  border-radius: var(--r-md);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(14px);
+  flex-shrink: 0;
+}
+
+.npu-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.35rem;
+}
+
+.npu-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.35rem;
+}
+
+.npu-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.68rem;
+  color: var(--txt-2);
+  font-weight: 600;
+}
+
+.npu-bar-row > span:first-child {
+  width: 26px;
+  flex-shrink: 0;
+  color: var(--txt-3);
+  font-family: var(--mono);
+}
+
+.npu-bar-row > span.font-mono {
+  width: 30px;
+  text-align: right;
+  color: var(--txt-1);
+  font-size: 0.66rem;
+  font-weight: 700;
+}
+
+.npu-bar-track {
+  flex: 1;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: var(--r-full);
+  overflow: hidden;
+}
+
+.npu-bar-fill {
+  height: 100%;
+  border-radius: var(--r-full);
+  transition: width 1s ease;
+}
+
+.npu-bar-fill.npu-bar-active {
+  background: linear-gradient(90deg, #00d4ff 0%, #7c6ff0 100%);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 6px rgba(0, 212, 255, 0.4);
+}
+
+.npu-bar-fill.npu-bar-ram {
+  background: linear-gradient(90deg, #7c6ff0, #a855f7);
+}
+
+.npu-bench-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.28rem 0.55rem;
+  background: rgba(0, 212, 255, 0.08);
+  border: 1px solid rgba(0, 212, 255, 0.22);
+  border-radius: var(--r-xs);
+  color: var(--cyan);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all var(--t-fast);
+}
+
+.npu-bench-btn:hover {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: rgba(0, 212, 255, 0.45);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.25);
+}
+
+/* ── Sub-Footer Info ── */
+.sidebar-footer-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.35rem;
+  margin-top: 0.25rem;
+  font-size: 0.65rem;
+  color: var(--txt-4);
+  font-weight: 500;
+  border-top: 1px solid var(--bdr-subtle);
+  flex-shrink: 0;
+}
