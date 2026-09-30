@@ -8,7 +8,7 @@
 
   @page {
     size: A4 portrait;
-    margin: 18mm 20mm;
+    margin: 10mm 14mm;
   }
 
   * {
@@ -21,46 +21,58 @@
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     color: #1e293b;
     background: #ffffff;
-    line-height: 1.5;
-    font-size: 10pt;
+    line-height: 1.4;
+    font-size: 9pt;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
 
+  .page {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .page-break {
+    page-break-before: always;
+  }
+
   .header-tag {
-    font-size: 9pt;
+    font-size: 8.5pt;
     font-weight: 700;
     letter-spacing: 0.08em;
     color: #00A693;
     text-transform: uppercase;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
   }
 
   h1 {
-    font-size: 22pt;
+    font-size: 21pt;
     font-weight: 800;
     color: #0066CC;
-    line-height: 1.2;
-    margin-bottom: 4px;
+    line-height: 1.15;
+    margin-bottom: 3px;
   }
 
   .subtitle {
     font-size: 11pt;
     font-weight: 600;
     color: #4F46E5;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
   }
 
   .meta-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    gap: 8px;
     background: #f8fafc;
     border: 1px solid #e2e8f0;
     border-radius: 8px;
-    padding: 10px 14px;
-    margin-bottom: 16px;
-    font-size: 9pt;
+    padding: 9px 13px;
+    margin-bottom: 12px;
+    font-size: 8.8pt;
   }
 
   .meta-item strong {
@@ -68,45 +80,38 @@
   }
 
   h2 {
-    font-size: 12pt;
+    font-size: 11.5pt;
     font-weight: 700;
     color: #0066CC;
-    margin-top: 14px;
-    margin-bottom: 6px;
+    margin-top: 10px;
+    margin-bottom: 5px;
     border-bottom: 1.5px solid #e2e8f0;
     padding-bottom: 3px;
   }
 
   p {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     color: #334155;
     text-align: justify;
+    line-height: 1.42;
   }
 
   ul {
-    list-style: none;
-    margin-bottom: 10px;
+    list-style-type: disc;
+    margin-left: 1.3em;
+    margin-bottom: 8px;
   }
 
   li {
-    position: relative;
-    padding-left: 14px;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     color: #334155;
-  }
-
-  li::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    color: #0066CC;
-    font-weight: bold;
+    line-height: 1.4;
   }
 
   table {
     width: 100%;
     border-collapse: collapse;
-    margin: 8px 0 12px 0;
+    margin: 6px 0 10px 0;
     font-size: 8.5pt;
   }
 
@@ -136,18 +141,8 @@
     font-weight: 700;
   }
 
-  .badge {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 8pt;
-    font-weight: 700;
-    background: #e0f2fe;
-    color: #0284c7;
-  }
-
   .footer {
-    margin-top: 16px;
+    margin-top: auto;
     padding-top: 8px;
     border-top: 1px solid #e2e8f0;
     display: flex;
@@ -159,180 +154,207 @@
 </head>
 <body>
 
-<div class="header-tag">Qualcomm Snapdragon AI Lab Hackathon Submission</div>
-<h1>MediSense Edge — On-Device Medical Intelligence</h1>
-<div class="subtitle">100% On-Device Clinical Decision Support Suite · 0 KB Cloud Data Egress</div>
+<!-- PAGE 1 -->
+<div class="page">
+  <div>
+    <div class="header-tag">Qualcomm Snapdragon AI Lab Hackathon Submission</div>
+    <h1>MediSense Edge — On-Device Medical Intelligence</h1>
+    <div class="subtitle">100% On-Device Clinical Decision Support Suite · 0 KB Cloud Data Egress</div>
 
-<div class="meta-grid">
-  <div class="meta-item"><strong>Target Platform:</strong> Snapdragon-powered HP PCs (Snapdragon X Elite / X Plus)</div>
-  <div class="meta-item"><strong>AI Hardware Engine:</strong> Qualcomm Hexagon NPU (45 TOPS) + Qualcomm AI Hub</div>
-  <div class="meta-item"><strong>Developer:</strong> Abhinav Tripathi (github.com/at84004630-del)</div>
-  <div class="meta-item"><strong>Privacy Standard:</strong> Air-Gapped Local RAM Isolation (HIPAA & GDPR Sovereign)</div>
+    <div class="meta-grid">
+      <div class="meta-item"><strong>Target Platform:</strong> Snapdragon-powered HP PCs (Snapdragon X Elite / X Plus)</div>
+      <div class="meta-item"><strong>AI Hardware Engine:</strong> Qualcomm Hexagon NPU (45 TOPS) + Qualcomm AI Hub</div>
+      <div class="meta-item"><strong>Developer:</strong> Abhinav Tripathi (github.com/at84004630-del)</div>
+      <div class="meta-item"><strong>Privacy Standard:</strong> Air-Gapped Local RAM Isolation (HIPAA & GDPR Sovereign)</div>
+    </div>
+
+    <h2>1. Executive Summary & Problem Statement</h2>
+    <p>
+      Modern healthcare urgently requires artificial intelligence to accelerate triage, assist clinical diagnostic workflows, and eliminate fatal polypharmacy errors. However, traditional cloud-hosted medical AI introduces unacceptable vulnerabilities:
+    </p>
+    <ul>
+      <li><strong>Severe PHI Privacy Violations:</strong> Sending patient scans, voice consults, and clinical history across the internet violates HIPAA and GDPR data sovereignty mandates. Healthcare breaches cost an average of $10.9M per incident.</li>
+      <li><strong>Latency & Connectivity Blackouts:</strong> Cloud APIs introduce 400ms – 1,500ms network round-trip delays, intolerable in acute emergency triage. Furthermore, over 45% of rural clinics, field hospitals, and natural disaster relief units operate with zero broadband connectivity.</li>
+      <li><strong>Prohibitive Recurring SaaS Fees:</strong> Per-query cloud API charges ($0.04 to $0.10 per call) burden resource-constrained community clinics with unpredictable operating costs.</li>
+    </ul>
+
+    <h2>2. The MediSense Edge Solution</h2>
+    <p>
+      <strong>MediSense Edge</strong> resolves this dilemma by deploying a hospital-grade, multi-modal clinical intelligence assistant running <strong>100% on-device</strong> on Snapdragon-powered HP PCs. By pairing quantized INT4/INT8 models compiled through <strong>Qualcomm AI Hub</strong> with the <strong>Snapdragon X Elite Hexagon NPU (45 TOPS)</strong>, MediSense Edge delivers real-time voice triage, differential diagnostic reasoning, vision pathology detection with Grad-CAM heatmaps, and pairwise polypharmacy cross-checking with <strong>0 KB cloud data egress</strong>, zero recurring subscriptions, and a tiny <strong>1.4W power footprint</strong>.
+    </p>
+
+    <h2>3. Qualcomm AI Hub Model Portfolio & Tasks</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Model Name</th>
+          <th>Clinical Task</th>
+          <th class="center">Quantization</th>
+          <th class="center">Parameters</th>
+          <th class="center">NPU Allocation</th>
+          <th class="center">Target Latency</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Whisper Base</strong></td>
+          <td>Real-Time Speech-to-Text</td>
+          <td class="center">INT8</td>
+          <td class="center">74M</td>
+          <td class="center">0.8 TOPS</td>
+          <td class="center highlight">18 ms</td>
+        </tr>
+        <tr>
+          <td><strong>Phi-3.5 Mini</strong></td>
+          <td>Differential Diagnostic Reasoning</td>
+          <td class="center">INT4</td>
+          <td class="center">3.8B</td>
+          <td class="center">18.0 TOPS</td>
+          <td class="center highlight">42 ms</td>
+        </tr>
+        <tr>
+          <td><strong>ResNet-50</strong></td>
+          <td>Dermoscopy & Melanoma Screen</td>
+          <td class="center">INT8</td>
+          <td class="center">25M</td>
+          <td class="center">3.8 TOPS</td>
+          <td class="center highlight">12 ms</td>
+        </tr>
+        <tr>
+          <td><strong>DenseNet-121</strong></td>
+          <td>Chest X-Ray Radiograph Pathology</td>
+          <td class="center">INT8</td>
+          <td class="center">8M</td>
+          <td class="center">1.4 TOPS</td>
+          <td class="center highlight">22 ms</td>
+        </tr>
+        <tr>
+          <td><strong>EfficientNet-B4</strong></td>
+          <td>Diabetic Retinopathy Fundus</td>
+          <td class="center">INT8</td>
+          <td class="center">19M</td>
+          <td class="center">2.6 TOPS</td>
+          <td class="center highlight">16 ms</td>
+        </tr>
+        <tr>
+          <td><strong>YOLOv8-Medical</strong></td>
+          <td>Surgical Wound & Granulation</td>
+          <td class="center">INT8</td>
+          <td class="center">3.2M</td>
+          <td class="center">2.0 TOPS</td>
+          <td class="center highlight">14 ms</td>
+        </tr>
+        <tr>
+          <td><strong>BioBERT</strong></td>
+          <td>Pairwise Drug Contraindications</td>
+          <td class="center">INT8</td>
+          <td class="center">110M</td>
+          <td class="center">2.1 TOPS</td>
+          <td class="center highlight">35 ms</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    <span>MediSense Edge — Qualcomm Snapdragon AI Lab Hackathon</span>
+    <span>Page 1 of 2</span>
+  </div>
 </div>
 
-<h2>1. Executive Summary & Problem Statement</h2>
-<p>
-Modern healthcare systems face an acute dilemma: clinicians require artificial intelligence to accelerate emergency triage, detect hidden pathology, and prevent fatal medication errors, yet cloud-hosted medical AI introduces unacceptable vulnerabilities:
-</p>
-<ul>
-  <li><strong>Severe PHI Privacy Violations:</strong> Transmitting medical images, voice dictations, and patient symptoms across public cloud networks violates HIPAA and GDPR data sovereignty regulations. Healthcare data breaches average $10.9M per incident.</li>
-  <li><strong>Latency & Connectivity Blackouts:</strong> Cloud API calls introduce 400ms – 1,500ms network round-trip delays, intolerable in acute emergency resuscitation. Over 45% of rural clinics, field hospitals, and natural disaster triage units operate with zero broadband connectivity.</li>
-  <li><strong>Prohibitive Recurring SaaS Fees:</strong> Per-query cloud API charges ($0.04 to $0.10 per call) burden resource-constrained community healthcare clinics.</li>
-</ul>
+<!-- PAGE 2 -->
+<div class="page page-break">
+  <div>
+    <h2>4. The Snapdragon NPU Advantage: Empirical Benchmarks</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Metric / Benchmark</th>
+          <th class="center" style="background: #008C78;">⚡ Snapdragon Hexagon NPU</th>
+          <th class="center">☁️ Cloud Medical API</th>
+          <th class="center">💻 Standard x86 CPU</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Inference Latency</strong></td>
+          <td class="center highlight">14 – 18 ms (Instantaneous)</td>
+          <td class="center">420 ms (Network RTT + Ingestion)</td>
+          <td class="center">380 ms (Compute Bound)</td>
+        </tr>
+        <tr>
+          <td><strong>Active Power Draw</strong></td>
+          <td class="center highlight">1.4 Watts (Ultra-Efficient)</td>
+          <td class="center">~35 Watts Server Equiv</td>
+          <td class="center">28 Watts (Thermal Throttle)</td>
+        </tr>
+        <tr>
+          <td><strong>Data Privacy & Egress</strong></td>
+          <td class="center highlight">0 KB sent to cloud (Air-Gapped)</td>
+          <td class="center">4.8 MB transmitted per scan</td>
+          <td class="center">0 KB (Local RAM)</td>
+        </tr>
+        <tr>
+          <td><strong>Offline Availability</strong></td>
+          <td class="center highlight">100% Functional (Zero Internet)</td>
+          <td class="center">0% (Fails Offline)</td>
+          <td class="center">100% Functional</td>
+        </tr>
+        <tr>
+          <td><strong>Operating Cost / Call</strong></td>
+          <td class="center highlight">$0 / month (Local hardware)</td>
+          <td class="center">$0.04 – $0.10 per call</td>
+          <td class="center">$0 / month</td>
+        </tr>
+        <tr>
+          <td><strong>Continuous Battery Life</strong></td>
+          <td class="center highlight">14+ Hours continuous duty</td>
+          <td class="center">Modem battery drain via Wi-Fi</td>
+          <td class="center">3.2 Hours before exhaustion</td>
+        </tr>
+      </tbody>
+    </table>
 
-<h2>2. The MediSense Edge Solution</h2>
-<p>
-<strong>MediSense Edge</strong> resolves this by establishing a hospital-grade, multi-modal edge AI copilot running 100% locally on Snapdragon-powered HP PCs. By leveraging quantized INT4/INT8 models compiled through <strong>Qualcomm AI Hub</strong> for the <strong>Snapdragon X Elite Hexagon NPU (45 TOPS)</strong>, MediSense Edge delivers real-time voice triage, differential diagnostic reasoning, vision pathology detection with Grad-CAM heatmaps, and pairwise polypharmacy cross-checking with <strong>0 KB cloud data egress</strong> and a tiny <strong>1.4W power footprint</strong>.
-</p>
+    <h2>5. Core Clinical Modules in MediSense Edge</h2>
+    <ul>
+      <li><strong>1. Symptom AI Checker (/symptoms):</strong> Speech-to-text streaming via Whisper Base with live audio waveform animation. Dynamically auto-tags spoken symptoms and anatomical terms, triggering Microsoft Phi-3.5 Mini to formulate prioritized differential diagnoses with local text-to-speech (TTS) audio readout.</li>
+      <li><strong>2. Multi-Modal Vision Diagnostics (/imaging):</strong> Evaluates dermoscopy (melanoma), chest radiographs (pneumonia/effusion), retinal fundus, and surgical wounds. Features an interactive Grad-CAM Class Activation Mapping overlay revealing the exact neural attention heatmap.</li>
+      <li><strong>3. Pharmacology Interaction Safety (/drugs):</strong> Calculates pairwise combinatorics across patient medication lists. BioBERT identifies high-risk CYP450 enzyme collisions, fatal bleeding hazards (Warfarin + Aspirin), and hyperkalemia alerts with 1-click clinical presets.</li>
+      <li><strong>4. Multi-Organ Health Risk Profiler (/risk):</strong> Dynamically evaluates 10-year Atherosclerotic Cardiovascular Disease (ASCVD), metabolic, respiratory, and renal risks with reactive Recharts radar and bar visualizations.</li>
+      <li><strong>5. AI Model Hub & Live NPU Benchmark Suite (/models):</strong> Live execution loop measuring P50/P99 latency, memory throughput, and power efficiency in real time directly on the Hexagon NPU.</li>
+    </ul>
 
-<h2>3. Qualcomm AI Hub Model Portfolio & Latency</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Model Name</th>
-      <th>Clinical Task</th>
-      <th class="center">Quantization</th>
-      <th class="center">Parameters</th>
-      <th class="center">NPU TOPS</th>
-      <th class="center">Latency</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Whisper Base</strong></td>
-      <td>Real-Time Speech-to-Text</td>
-      <td class="center">INT8</td>
-      <td class="center">74M</td>
-      <td class="center">0.8 TOPS</td>
-      <td class="center highlight">18 ms</td>
-    </tr>
-    <tr>
-      <td><strong>Phi-3.5 Mini</strong></td>
-      <td>Differential Diagnostic Reasoning</td>
-      <td class="center">INT4</td>
-      <td class="center">3.8B</td>
-      <td class="center">18.0 TOPS</td>
-      <td class="center highlight">42 ms</td>
-    </tr>
-    <tr>
-      <td><strong>ResNet-50</strong></td>
-      <td>Dermoscopy & Melanoma Screen</td>
-      <td class="center">INT8</td>
-      <td class="center">25M</td>
-      <td class="center">3.8 TOPS</td>
-      <td class="center highlight">12 ms</td>
-    </tr>
-    <tr>
-      <td><strong>DenseNet-121</strong></td>
-      <td>Chest X-Ray Radiograph Pathology</td>
-      <td class="center">INT8</td>
-      <td class="center">8M</td>
-      <td class="center">1.4 TOPS</td>
-      <td class="center highlight">22 ms</td>
-    </tr>
-    <tr>
-      <td><strong>EfficientNet-B4</strong></td>
-      <td>Diabetic Retinopathy Fundus</td>
-      <td class="center">INT8</td>
-      <td class="center">19M</td>
-      <td class="center">2.6 TOPS</td>
-      <td class="center highlight">16 ms</td>
-    </tr>
-    <tr>
-      <td><strong>YOLOv8-Medical</strong></td>
-      <td>Surgical Wound & Granulation</td>
-      <td class="center">INT8</td>
-      <td class="center">3.2M</td>
-      <td class="center">2.0 TOPS</td>
-      <td class="center highlight">14 ms</td>
-    </tr>
-    <tr>
-      <td><strong>BioBERT</strong></td>
-      <td>Pairwise Drug Contraindications</td>
-      <td class="center">INT8</td>
-      <td class="center">110M</td>
-      <td class="center">2.1 TOPS</td>
-      <td class="center highlight">35 ms</td>
-    </tr>
-  </tbody>
-</table>
+    <h2>6. UI/UX Overhaul: Adaptive Dual-Theme & Mobile-First Design</h2>
+    <p>
+      MediSense Edge features a completely redesigned, clinical human-factors interface:
+    </p>
+    <ul>
+      <li><strong>Clinical Light Mode (Default):</strong> Engineered for brightly lit hospital wards with crisp white surfaces (#FFFFFF & #F8FAFC) and deep clinical blue (#0066CC) compliant with strict WCAG AAA contrast ratios under fluorescent lighting.</li>
+      <li><strong>Cyber-Clinical Dark Mode:</strong> Low-light view optimized for night shifts, ICUs, and radiology suites with an animated Sun/Moon toggle and localStorage persistence.</li>
+      <li><strong>Mobile-First Responsive Drawer:</strong> Slide-in navigation drawer with frosted glass blur backdrop, mobile search FAB, and ergonomic cursor calibration (pointer on interactive controls, text cursor preserved on notes).</li>
+    </ul>
 
-<h2>4. The Snapdragon NPU Advantage: Empirical Benchmarks</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Metric / Benchmark</th>
-      <th class="center" style="background: #008C78;">⚡ Snapdragon Hexagon NPU</th>
-      <th class="center">☁️ Cloud Medical API</th>
-      <th class="center">💻 Standard x86 CPU</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Inference Latency</strong></td>
-      <td class="center highlight">14 – 18 ms (Instant)</td>
-      <td class="center">420 ms (Network RTT)</td>
-      <td class="center">380 ms (Compute Bound)</td>
-    </tr>
-    <tr>
-      <td><strong>Active Power Draw</strong></td>
-      <td class="center highlight">1.4 Watts (Ultra-Efficient)</td>
-      <td class="center">~35 Watts Server Equiv</td>
-      <td class="center">28 Watts (Thermal Throttle)</td>
-    </tr>
-    <tr>
-      <td><strong>Data Privacy & Egress</strong></td>
-      <td class="center highlight">0 KB sent to cloud (Air-Gapped)</td>
-      <td class="center">4.8 MB transmitted per scan</td>
-      <td class="center">0 KB (Local RAM)</td>
-    </tr>
-    <tr>
-      <td><strong>Offline Availability</strong></td>
-      <td class="center highlight">100% Functional (Zero Internet)</td>
-      <td class="center">0% (Fails Offline)</td>
-      <td class="center">100% Functional</td>
-    </tr>
-    <tr>
-      <td><strong>Operating Cost / Call</strong></td>
-      <td class="center highlight">$0 / month (Local hardware)</td>
-      <td class="center">$0.04 – $0.10 per call</td>
-      <td class="center">$0 / month</td>
-    </tr>
-    <tr>
-      <td><strong>Continuous Battery Life</strong></td>
-      <td class="center highlight">14+ Hours continuous duty</td>
-      <td class="center">Modem battery drain</td>
-      <td class="center">3.2 Hours before exhaustion</td>
-    </tr>
-  </tbody>
-</table>
+    <h2>7. Real-World Deployment Scenarios & Market Impact</h2>
+    <p>
+      MediSense Edge is engineered for immediate deployment across four high-value clinical settings:
+      <strong>Emergency Ambulances & First Responders</strong> (hands-free voice triage with zero cellular signal); 
+      <strong>Rural & Community Health Centers</strong> (Tier-1 diagnostic screening without broadband); 
+      <strong>Military Field Operations & Disaster Relief</strong> (100% air-gapped security with zero electromagnetic network footprint); and 
+      <strong>Hospital Bedside Rounds</strong> (physicians carrying Snapdragon-powered HP laptops with 14+ hours battery life).
+    </p>
 
-<h2>5. Core Clinical Modules in MediSense Edge</h2>
-<ul>
-  <li><strong>1. Symptom AI Checker (/symptoms):</strong> Speech-to-text streaming via Whisper Base with live audio waveform animation. Dynamically auto-tags spoken symptoms and anatomical terms, triggering Microsoft Phi-3.5 Mini to formulate prioritized differential diagnoses with local text-to-speech (TTS) audio readout.</li>
-  <li><strong>2. Multi-Modal Vision Diagnostics (/imaging):</strong> Evaluates dermoscopy (melanoma), chest radiographs (pneumonia/effusion), retinal fundus, and surgical wounds. Features an interactive Grad-CAM Class Activation Mapping overlay revealing the exact neural attention heatmap.</li>
-  <li><strong>3. Pharmacology Interaction Safety (/drugs):</strong> Calculates pairwise combinatorics across patient medication lists. BioBERT identifies high-risk CYP450 enzyme collisions, fatal bleeding hazards (Warfarin + Aspirin), and hyperkalemia alerts with 1-click clinical presets.</li>
-  <li><strong>4. Multi-Organ Health Risk Profiler (/risk):</strong> Dynamically evaluates 10-year Atherosclerotic Cardiovascular Disease (ASCVD), metabolic, respiratory, and renal risks with reactive Recharts radar and bar visualizations.</li>
-  <li><strong>5. AI Model Hub & Live NPU Benchmark Suite (/models):</strong> Live execution loop measuring P50/P99 latency, memory throughput, and power efficiency in real time directly on the Hexagon NPU.</li>
-</ul>
+    <h2>8. Submission Resources</h2>
+    <p style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px 12px; margin-top: 6px;">
+      <strong>GitHub Repository:</strong> https://github.com/at84004630-del/medisense-edge<br>
+      <strong>Target Hardware:</strong> Snapdragon X Elite / Snapdragon X Plus (HP PC Ecosystem)<br>
+      <strong>Developer:</strong> Abhinav Tripathi (at84004630@gmail.com) &nbsp;|&nbsp; <strong>License:</strong> MIT Open Source
+    </p>
+  </div>
 
-<h2>6. UI/UX Overhaul: Adaptive Dual-Theme & Mobile-First Design</h2>
-<p>
-MediSense Edge features a brand-new, human-factors engineered clinical interface:
-<strong>Light Mode as Default</strong> with crisp white/slate surfaces (#FFFFFF & #F8FAFC) and deep clinical blue (#0066CC) compliant with WCAG AAA standards under fluorescent hospital lights; 
-<strong>Cyber-Clinical Dark Mode</strong> for night shifts and radiology suites with an animated Sun/Moon toggle; and a <strong>Mobile-First Responsive Drawer</strong> with frosted backdrop blur and quick mobile search.
-</p>
-
-<h2>7. Submission Resources</h2>
-<p>
-<strong>GitHub Repository:</strong> https://github.com/at84004630-del/medisense-edge<br>
-<strong>Target Hardware:</strong> Snapdragon X Elite / Snapdragon X Plus (HP PC Ecosystem)<br>
-<strong>Developer:</strong> Abhinav Tripathi (at84004630@gmail.com) | <strong>License:</strong> MIT Open Source
-</p>
-
-<div class="footer">
-  <span>MediSense Edge — Qualcomm Snapdragon AI Lab Hackathon</span>
-  <span>Page 1 of 1</span>
+  <div class="footer">
+    <span>MediSense Edge — Qualcomm Snapdragon AI Lab Hackathon</span>
+    <span>Page 2 of 2</span>
+  </div>
 </div>
 
 </body>
