@@ -35,5 +35,5 @@ Thumbs.db
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
 *.tsbuildinfo
+.venv/
