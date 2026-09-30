@@ -65,7 +65,7 @@ const initialLiveVitals: VitalsPoint[] = [
 type ChartTab = 'HR' | 'SpO₂' | 'BP' | 'Stress'
 const CHART_CONFIG: Record<ChartTab, { key: keyof VitalsPoint; color: string; name: string; unit: string }> = {
   'HR':     { key: 'hr',     color: 'var(--red)',   name: 'Heart Rate',       unit: 'bpm' },
-  'SpO₂':   { key: 'spo2',   color: 'var(--cyan)',  name: 'Blood Oxygen',     unit: '%' },
+  'SpO₂':   { key: 'spo2',   color: 'var(--blue)',  name: 'Blood Oxygen',     unit: '%' },
   'BP':     { key: 'bpSys',  color: 'var(--amber)', name: 'Systolic Pressure', unit: 'mmHg' },
   'Stress': { key: 'stress', color: 'var(--purple-l)', name: 'Stress Index', unit: '%' },
 }
@@ -187,7 +187,7 @@ const aiModels = [
   { name: 'Phi-3.5 Mini',     task: 'Clinical Reasoning LLM',      ms: 18,  tops: 18.0,  status: 'Ready',   color: 'var(--purple-l)' },
   { name: 'ResNet-50 Vision', task: 'X-Ray & Dermoscopy Vision',   ms: 12,  tops: 3.8,   status: 'Active',  color: 'var(--green)' },
   { name: 'BioBERT NLP',      task: 'Pharmacology & Interactions', ms: 35,  tops: 2.1,   status: 'Ready',   color: 'var(--amber)' },
-  { name: 'Whisper Base',     task: 'Speech-to-Text Voice Input',  ms: 22,  tops: 0.8,   status: 'Standby', color: 'var(--cyan)' },
+  { name: 'Whisper Base',     task: 'Speech-to-Text Voice Input',  ms: 22,  tops: 0.8,   status: 'Standby', color: 'var(--blue)' },
 ]
 
 interface TipPayload {
@@ -341,7 +341,7 @@ export default function Dashboard() {
               <div style={{
                 width: 32, height: 32, borderRadius: 'var(--r-sm)',
                 background: 'rgba(0, 212, 255, 0.12)', border: '1px solid rgba(0, 212, 255, 0.3)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--cyan)'
+                display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--blue)'
               }}>
                 <Stethoscope size={18} />
               </div>
@@ -363,7 +363,7 @@ export default function Dashboard() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem', flexWrap: 'wrap', fontSize: '0.72rem', color: 'var(--txt-3)' }}>
               <span>Welcome, <strong>Dr. Abhinav Tripathi</strong></span>
               <span>·</span>
-              <span style={{ color: 'var(--cyan)', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
+              <span style={{ color: 'var(--blue)', display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
                 <Zap size={11} /> 12ms Latency
               </span>
               <span>·</span>
@@ -437,10 +437,10 @@ export default function Dashboard() {
       <div style={{ marginBottom: '1.25rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.65rem' }}>
           <h3 style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--txt-1)', display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-            <Sparkles size={15} color="var(--cyan)" />
+            <Sparkles size={15} color="var(--blue)" />
             On-Device Diagnostic Workstations
           </h3>
-          <Link to="/models" style={{ fontSize: '0.74rem', color: 'var(--cyan)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.2rem', fontWeight: 600 }}>
+          <Link to="/models" style={{ fontSize: '0.74rem', color: 'var(--blue)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.2rem', fontWeight: 600 }}>
             Model Benchmarks <ChevronRight size={12} />
           </Link>
         </div>
@@ -575,7 +575,7 @@ export default function Dashboard() {
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.65rem' }}>
                 <div style={{
                   width: 34, height: 34, borderRadius: 'var(--r-sm)',
-                  background: 'rgba(0, 212, 255, 0.15)', color: 'var(--cyan)',
+                  background: 'rgba(0, 212, 255, 0.15)', color: 'var(--blue)',
                   border: '1px solid rgba(0, 212, 255, 0.35)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center'
                 }}>
@@ -591,7 +591,7 @@ export default function Dashboard() {
               </p>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid var(--bdr-subtle)', paddingTop: '0.6rem' }}>
-              <span style={{ fontSize: '0.66rem', color: 'var(--cyan)', fontFamily: 'var(--mono)', fontWeight: 600 }}>Reactive engine</span>
+              <span style={{ fontSize: '0.66rem', color: 'var(--blue)', fontFamily: 'var(--mono)', fontWeight: 600 }}>Reactive engine</span>
               <span style={{ fontSize: '0.72rem', color: 'var(--txt-1)', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '0.15rem' }}>
                 Open <ChevronRight size={12} />
               </span>
@@ -606,7 +606,7 @@ export default function Dashboard() {
         <div className="card" style={{ padding: '1.1rem' }}>
           <div className="section-hd" style={{ marginBottom: '0.75rem', flexWrap: 'wrap', gap: '0.5rem' }}>
             <div>
-              <div className="section-title"><Activity size={15} color="var(--cyan)" />Continuous Biometric Waveform</div>
+              <div className="section-title"><Activity size={15} color="var(--blue)" />Continuous Biometric Waveform</div>
               <div className="section-sub">On-device continuous telemetry stream · Snapdragon DSP filtered</div>
             </div>
             <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', alignItems: 'center' }}>
@@ -656,8 +656,8 @@ export default function Dashboard() {
                   <stop offset="95%" stopColor={cfg.color} stopOpacity={0.02} />
                 </linearGradient>
                 <linearGradient id="gDiastolic" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%"  stopColor="var(--cyan)" stopOpacity={0.25} />
-                  <stop offset="95%" stopColor="var(--cyan)" stopOpacity={0.01} />
+                  <stop offset="5%"  stopColor="var(--blue)" stopOpacity={0.25} />
+                  <stop offset="95%" stopColor="var(--blue)" stopOpacity={0.01} />
                 </linearGradient>
               </defs>
               <CartesianGrid stroke="rgba(0, 212, 255, 0.05)" vertical={false} />
@@ -686,11 +686,11 @@ export default function Dashboard() {
                     type="monotone"
                     dataKey="bpDia"
                     name="Diastolic (mmHg)"
-                    stroke="var(--cyan)"
+                    stroke="var(--blue)"
                     fill="url(#gDiastolic)"
                     strokeWidth={2}
-                    dot={{ r: 2.5, fill: 'var(--cyan)', stroke: '#020b18', strokeWidth: 1.5 }}
-                    activeDot={{ r: 4.5, fill: 'var(--cyan)', stroke: '#fff', strokeWidth: 2 }}
+                    dot={{ r: 2.5, fill: 'var(--blue)', stroke: '#020b18', strokeWidth: 1.5 }}
+                    activeDot={{ r: 4.5, fill: 'var(--blue)', stroke: '#fff', strokeWidth: 2 }}
                     animationDuration={400}
                   />
                 </>
@@ -824,7 +824,7 @@ export default function Dashboard() {
               <div style={{ position: 'absolute', top: 6, left: 10, zIndex: 3, display: 'flex', gap: '0.45rem', fontSize: '0.58rem', fontFamily: 'var(--mono)', color: 'var(--txt-4)' }}>
                 <span>P-Wave</span>
                 <span>·</span>
-                <span style={{ color: activeRhythm.severity === 'alert' ? '#ff4d6d' : 'var(--cyan)' }}>QRS Complex</span>
+                <span style={{ color: activeRhythm.severity === 'alert' ? '#ff4d6d' : 'var(--blue)' }}>QRS Complex</span>
                 <span>·</span>
                 <span style={{ color: activeRhythm.st > 0 ? '#ff4d6d' : undefined }}>ST-Segment</span>
                 <span>·</span>
@@ -901,7 +901,7 @@ export default function Dashboard() {
               fontSize: '0.67rem'
             }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.2rem' }}>
-                <span style={{ fontWeight: 700, color: activeRhythm.severity === 'alert' ? '#ff4d6d' : 'var(--cyan)', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
+                <span style={{ fontWeight: 700, color: activeRhythm.severity === 'alert' ? '#ff4d6d' : 'var(--blue)', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
                   <Cpu size={12} />
                   {activeRhythm.npuInference}
                 </span>
@@ -986,7 +986,7 @@ export default function Dashboard() {
                       <p style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--txt-1)' }}>
                         {item.type}
                       </p>
-                      <span style={{ fontSize: '0.66rem', color: 'var(--cyan)', fontFamily: 'var(--mono)' }}>
+                      <span style={{ fontSize: '0.66rem', color: 'var(--blue)', fontFamily: 'var(--mono)' }}>
                         {item.conf}% conf
                       </span>
                     </div>
@@ -1010,7 +1010,7 @@ export default function Dashboard() {
         <div className="card" style={{ padding: '1.1rem' }}>
           <div className="section-hd" style={{ marginBottom: '0.85rem' }}>
             <div>
-              <div className="section-title"><Cpu size={15} color="var(--cyan)" />Snapdragon Neural Hub</div>
+              <div className="section-title"><Cpu size={15} color="var(--blue)" />Snapdragon Neural Hub</div>
               <div className="section-sub">Hexagon DSP runtime memory map</div>
             </div>
             <Link to="/models" className="badge badge-cyan" style={{ textDecoration: 'none', cursor: 'pointer', fontSize: '0.64rem' }}>
@@ -1049,7 +1049,7 @@ export default function Dashboard() {
                 </div>
 
                 <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--cyan)', fontFamily: 'var(--mono)' }}>
+                  <div style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--blue)', fontFamily: 'var(--mono)' }}>
                     {m.ms} ms
                   </div>
                   <div style={{ fontSize: '0.64rem', color: 'var(--txt-4)', fontFamily: 'var(--mono)' }}>

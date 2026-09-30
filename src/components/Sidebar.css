@@ -1,6 +1,6 @@
 /* ============================================================
-   MediSense Edge — Sidebar Styles (Compact & High-Contrast)
-   Next-Generation Clinical Navigation & NPU Hardware Telemetry
+   MediSense Edge — Sidebar Styles (Light Theme v3)
+   White + Deep Blue Clinical Navigation
    ============================================================ */
 
 .sidebar {
@@ -9,15 +9,15 @@
   position: fixed;
   left: 0;
   top: 0;
-  background: linear-gradient(180deg, #030914 0%, #050e1f 60%, #030814 100%);
-  border-right: 1px solid var(--bdr-subtle);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 60%, #f1f5f9 100%);
+  border-right: 1px solid var(--bdr-base);
   display: flex;
   flex-direction: column;
   padding: 0.55rem 0.75rem 0.45rem;
   z-index: 100;
   overflow-y: auto;
   overflow-x: hidden;
-  box-shadow: 4px 0 28px rgba(0, 0, 0, 0.45);
+  box-shadow: 2px 0 20px rgba(15,23,42,0.08), 1px 0 4px rgba(15,23,42,0.04);
   transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.32s ease;
 }
 
@@ -35,7 +35,7 @@
   width: 4px;
 }
 .sidebar::-webkit-scrollbar-thumb {
-  background: rgba(0, 212, 255, 0.2);
+  background: rgba(0,102,204,0.18);
   border-radius: var(--r-full);
 }
 
@@ -45,7 +45,7 @@
   left: -50px;
   width: 240px;
   height: 240px;
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, rgba(124, 111, 240, 0.06) 50%, transparent 70%);
+  background: radial-gradient(circle, rgba(0,102,204,0.06) 0%, rgba(79,70,229,0.03) 50%, transparent 70%);
   pointer-events: none;
 }
 
@@ -55,7 +55,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.15rem 0.25rem 0.45rem;
-  border-bottom: 1px solid var(--bdr-subtle);
+  border-bottom: 1px solid var(--bdr-base);
   margin-bottom: 0.45rem;
   flex-shrink: 0;
 }
@@ -78,8 +78,8 @@
   width: 28px;
   height: 28px;
   border-radius: var(--r-xs);
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--bdr-subtle);
+  background: var(--bg-elevated);
+  border: 1px solid var(--bdr-base);
   color: var(--txt-3);
   display: flex;
   align-items: center;
@@ -90,10 +90,10 @@
 }
 
 .sidebar-slide-toggle:hover {
-  background: rgba(0, 212, 255, 0.15);
-  border-color: rgba(0, 212, 255, 0.45);
-  color: var(--cyan);
-  box-shadow: 0 0 12px rgba(0, 212, 255, 0.25);
+  background: var(--blue-xl);
+  border-color: rgba(0,102,204,0.35);
+  color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(0,102,204,0.10);
 }
 
 /* ── Privacy Status Pill ── */
@@ -102,16 +102,15 @@
   align-items: center;
   gap: 0.45rem;
   padding: 0.22rem 0.65rem;
-  background: rgba(0, 229, 160, 0.09);
-  border: 1px solid rgba(0, 229, 160, 0.26);
+  background: var(--green-xl);
+  border: 1px solid rgba(16,185,129,0.28);
   border-radius: var(--r-full);
   font-size: 0.68rem;
   font-weight: 700;
-  color: var(--green);
+  color: var(--green-d);
   margin: 0 0 0.45rem;
   letter-spacing: 0.02em;
-  box-shadow: 0 0 10px rgba(0, 229, 160, 0.08);
-  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 4px rgba(16,185,129,0.10);
   flex-shrink: 0;
 }
 
@@ -136,7 +135,7 @@
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--txt-3);
+  color: var(--txt-4);
   font-family: var(--mono);
 }
 
@@ -163,17 +162,17 @@
 }
 
 .nav-item:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: #f1f5f9;
   color: var(--txt-1);
-  border-color: var(--bdr-subtle);
+  border-color: var(--bdr-base);
   transform: translateX(3px);
 }
 
 .nav-active {
-  background: linear-gradient(90deg, rgba(13, 28, 48, 0.95) 0%, rgba(7, 18, 36, 0.85) 100%);
-  border-color: var(--bdr-card);
+  background: linear-gradient(90deg, var(--blue-xl) 0%, rgba(232, 242, 252, 0.6) 100%);
+  border-color: rgba(0,102,204,0.22);
   color: var(--txt-1);
-  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.4), 0 0 12px rgba(0, 212, 255, 0.12);
+  box-shadow: var(--shd-sm);
 }
 
 /* Prominent, readable icon badge */
@@ -238,8 +237,8 @@
   font-weight: 700;
   padding: 0.06rem 0.35rem;
   border-radius: 3px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #f1f5f9;
+  border: 1px solid var(--bdr-base);
   color: var(--txt-3);
   font-family: var(--mono);
   letter-spacing: 0.03em;
@@ -248,7 +247,9 @@
 }
 
 .nav-active .nav-item-badge {
-  color: #fff;
+  background: rgba(0,102,204,0.10);
+  border-color: rgba(0,102,204,0.22);
+  color: var(--blue);
 }
 
 .nav-keyhint {
@@ -258,15 +259,15 @@
   font-weight: 700;
   padding: 0.1rem 0.35rem;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #f1f5f9;
+  border: 1px solid var(--bdr-base);
   flex-shrink: 0;
 }
 
 .nav-active .nav-keyhint {
-  color: var(--cyan);
-  background: rgba(0, 212, 255, 0.12);
-  border-color: rgba(0, 212, 255, 0.35);
+  color: var(--blue);
+  background: var(--blue-xl);
+  border-color: rgba(0,102,204,0.28);
 }
 
 .nav-active-indicator {
@@ -283,14 +284,22 @@
 .npu-card {
   margin-top: 0.45rem;
   padding: 0.5rem 0.65rem;
-  background: rgba(7, 18, 36, 0.88);
-  border: 1px solid var(--bdr-card);
+  background: #fff;
+  border: 1px solid var(--bdr-base);
   border-radius: var(--r-md);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(14px);
+  box-shadow: var(--shd-sm);
   flex-shrink: 0;
+}
+
+.npu-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--grad-brand);
+  border-radius: var(--r-md) var(--r-md) 0 0;
 }
 
 .npu-card-header {
@@ -334,7 +343,7 @@
 .npu-bar-track {
   flex: 1;
   height: 4px;
-  background: rgba(0, 0, 0, 0.45);
+  background: #e2e8f0;
   border-radius: var(--r-full);
   overflow: hidden;
 }
@@ -346,14 +355,13 @@
 }
 
 .npu-bar-fill.npu-bar-active {
-  background: linear-gradient(90deg, #00d4ff 0%, #7c6ff0 100%);
+  background: var(--grad-brand);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 0 6px rgba(0, 212, 255, 0.4);
 }
 
 .npu-bar-fill.npu-bar-ram {
-  background: linear-gradient(90deg, #7c6ff0, #a855f7);
+  background: linear-gradient(90deg, #4F46E5, #8B5CF6);
 }
 
 .npu-bench-btn {
@@ -361,10 +369,10 @@
   align-items: center;
   gap: 0.35rem;
   padding: 0.28rem 0.55rem;
-  background: rgba(0, 212, 255, 0.08);
-  border: 1px solid rgba(0, 212, 255, 0.22);
+  background: var(--blue-xl);
+  border: 1px solid rgba(0,102,204,0.22);
   border-radius: var(--r-xs);
-  color: var(--cyan);
+  color: var(--blue);
   font-size: 0.7rem;
   font-weight: 700;
   text-decoration: none;
@@ -372,9 +380,9 @@
 }
 
 .npu-bench-btn:hover {
-  background: rgba(0, 212, 255, 0.2);
-  border-color: rgba(0, 212, 255, 0.45);
-  box-shadow: 0 0 10px rgba(0, 212, 255, 0.25);
+  background: rgba(0,102,204,0.14);
+  border-color: rgba(0,102,204,0.40);
+  box-shadow: 0 0 0 3px rgba(0,102,204,0.08);
 }
 
 /* ── Sub-Footer Info ── */
@@ -387,6 +395,6 @@
   font-size: 0.65rem;
   color: var(--txt-4);
   font-weight: 500;
-  border-top: 1px solid var(--bdr-subtle);
+  border-top: 1px solid var(--bdr-base);
   flex-shrink: 0;
 }

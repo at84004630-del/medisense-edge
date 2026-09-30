@@ -70,7 +70,7 @@ const MODELS: Model[] = [
 ]
 
 const COLOR_MAP: Record<string, { badge: string; txt: string; glow: string }> = {
-  cyan:   { badge: 'badge-cyan',   txt: 'var(--cyan)',     glow: 'rgba(0,212,255,0.15)' },
+  cyan:   { badge: 'badge-cyan',   txt: 'var(--blue)',     glow: 'rgba(0,102,204,0.18)' },
   purple: { badge: 'badge-purple', txt: 'var(--purple-l)', glow: 'rgba(124,111,240,0.15)' },
   green:  { badge: 'badge-green',  txt: 'var(--green)',    glow: 'rgba(0,229,160,0.15)' },
   amber:  { badge: 'badge-amber',  txt: 'var(--amber)',    glow: 'rgba(255,181,71,0.15)' },
@@ -80,7 +80,7 @@ const COLOR_MAP: Record<string, { badge: string; txt: string; glow: string }> = 
 
 const STATUS_CFG: Record<string, { badge: string; color: string; dot: string; label: string }> = {
   ready:   { badge: 'badge-green', color: 'var(--green)', dot: 'live', label: 'Ready' },
-  idle:    { badge: 'badge-cyan',  color: 'var(--cyan)',  dot: 'idle', label: 'Idle' },
+  idle:    { badge: 'badge-cyan',  color: 'var(--blue)',  dot: 'idle', label: 'Idle' },
   loading: { badge: 'badge-amber', color: 'var(--amber)', dot: 'warn', label: 'Loading' },
   error:   { badge: 'badge-red',   color: 'var(--red)',   dot: 'error', label: 'Error' },
 }
@@ -371,9 +371,9 @@ export default function AIModels() {
       {/* ── TAB 2: Snapdragon NPU vs. Cloud vs. CPU Matrix ── */}
       {activeTab === 'comparison' && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-          <div className="card glass-shine" style={{ background: 'rgba(0,212,255,0.04)', borderColor: 'rgba(0,212,255,0.2)' }}>
+          <div className="card glass-shine" style={{ background: 'rgba(0,102,204,0.05)', borderColor: 'rgba(0,102,204,0.20)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <ShieldCheck size={24} color="var(--cyan)" />
+              <ShieldCheck size={24} color="var(--blue)" />
               <div>
                 <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--txt-1)' }}>
                   Empirical Edge AI Advantage: Snapdragon NPU vs. Cloud vs. CPU
@@ -390,7 +390,7 @@ export default function AIModels() {
               <thead>
                 <tr style={{ background: 'var(--bg-surface)', borderBottom: '1px solid var(--bdr-card)' }}>
                   <th style={{ padding: '0.875rem 1.25rem', color: 'var(--txt-3)', fontWeight: 700 }}>Evaluation Metric</th>
-                  <th style={{ padding: '0.875rem 1.25rem', color: 'var(--cyan)', fontWeight: 800 }}>⚡ Snapdragon Hexagon NPU</th>
+                  <th style={{ padding: '0.875rem 1.25rem', color: 'var(--blue)', fontWeight: 800 }}>⚡ Snapdragon Hexagon NPU</th>
                   <th style={{ padding: '0.875rem 1.25rem', color: 'var(--amber)', fontWeight: 700 }}>☁️ Cloud Medical API</th>
                   <th style={{ padding: '0.875rem 1.25rem', color: 'var(--txt-4)', fontWeight: 700 }}>💻 Standard x86 CPU</th>
                   <th style={{ padding: '0.875rem 1.25rem', color: 'var(--green)', fontWeight: 700 }}>Clinical Advantage</th>
@@ -400,7 +400,7 @@ export default function AIModels() {
                 {BENCHMARK_COMPARISON.map((row, i) => (
                   <tr key={row.metric} style={{ borderBottom: '1px solid var(--bdr-subtle)', background: i % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.01)' }}>
                     <td style={{ padding: '0.875rem 1.25rem', fontWeight: 600, color: 'var(--txt-1)' }}>{row.metric}</td>
-                    <td style={{ padding: '0.875rem 1.25rem', fontWeight: 700, color: 'var(--cyan)', fontFamily: 'var(--mono)' }}>{row.npu}</td>
+                    <td style={{ padding: '0.875rem 1.25rem', fontWeight: 700, color: 'var(--blue)', fontFamily: 'var(--mono)' }}>{row.npu}</td>
                     <td style={{ padding: '0.875rem 1.25rem', color: 'var(--txt-2)' }}>{row.cloud}</td>
                     <td style={{ padding: '0.875rem 1.25rem', color: 'var(--txt-3)' }}>{row.cpu}</td>
                     <td style={{ padding: '0.875rem 1.25rem' }}>
@@ -423,7 +423,7 @@ export default function AIModels() {
             </div>
 
             <div className="card">
-              <h4 style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--cyan)', marginBottom: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+              <h4 style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--blue)', marginBottom: '0.4rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
                 <Zap size={16} /> Energy Efficiency & Battery Conservation
               </h4>
               <p style={{ fontSize: '0.8rem', color: 'var(--txt-2)', lineHeight: 1.6 }}>
@@ -477,7 +477,7 @@ export default function AIModels() {
             {benchmarking && (
               <div style={{ marginTop: '1rem' }}>
                 <div className="progress-track" style={{ height: 8 }}>
-                  <div className="progress-fill" style={{ width: `${benchmarkProgress}%`, background: 'var(--cyan)' }} />
+                  <div className="progress-fill" style={{ width: `${benchmarkProgress}%`, background: 'var(--blue)' }} />
                 </div>
               </div>
             )}
@@ -486,7 +486,7 @@ export default function AIModels() {
           {/* Benchmark Results Display */}
           {benchmarkResult && (
             <div className="card glass-shine" style={{
-              background: 'rgba(0,229,160,0.03)', borderColor: 'rgba(0,229,160,0.3)',
+              background: 'rgba(0,229,160,0.03)', borderColor: 'rgba(16,185,129,0.20)',
               animation: 'slideUp 0.3s ease both'
             }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.25rem', borderBottom: '1px solid var(--bdr-subtle)', paddingBottom: '0.75rem' }}>
@@ -514,12 +514,12 @@ export default function AIModels() {
               {/* Verified Metrics Grid */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.875rem' }}>
                 {[
-                  { label: 'Latency P50', value: `${benchmarkResult.latencyP50}ms`, unit: 'Per inference', color: 'var(--cyan)' },
+                  { label: 'Latency P50', value: `${benchmarkResult.latencyP50}ms`, unit: 'Per inference', color: 'var(--blue)' },
                   { label: 'Latency P99', value: `${benchmarkResult.latencyP99}ms`, unit: 'Tail bound', color: 'var(--txt-1)' },
                   { label: 'Throughput', value: benchmarkResult.throughput, unit: 'Continuous load', color: 'var(--green)' },
                   { label: 'Active Power Draw', value: `${benchmarkResult.powerWatts}W`, unit: 'Extreme efficiency', color: 'var(--amber)' },
                   { label: 'Memory Bandwidth', value: benchmarkResult.memoryBw, unit: 'LPDDR5x stream', color: 'var(--purple-l)' },
-                  { label: 'NPU Allocation', value: benchmarkResult.topsUtilized, unit: 'Hexagon DSP', color: 'var(--cyan)' },
+                  { label: 'NPU Allocation', value: benchmarkResult.topsUtilized, unit: 'Hexagon DSP', color: 'var(--blue)' },
                   { label: 'Speedup Factor', value: benchmarkResult.speedupVsCpu, unit: 'Over CPU fallback', color: 'var(--green)' },
                   { label: 'Cloud Data Egress', value: '0.00 KB', unit: '100% On-device', color: 'var(--green)' },
                 ].map((stat, i) => (

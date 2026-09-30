@@ -12,12 +12,12 @@ interface SidebarProps {
 }
 
 const navItems = [
-  { to: '/',         icon: Activity,    label: 'Dashboard',         sub: 'Clinical Overview',   model: 'Live',     keyHint: '1', color: 'cyan',   hex: '#00d4ff' },
-  { to: '/symptoms', icon: Brain,       label: 'Symptom AI',        sub: 'Phi-3.5 Mini · NPU',  model: 'LLM',      keyHint: '2', color: 'purple', hex: '#a855f7' },
-  { to: '/imaging',  icon: ImageIcon,   label: 'Image Diagnostics', sub: 'ResNet-50 · Vision',  model: 'Vision',   keyHint: '3', color: 'green',  hex: '#00e5a0' },
-  { to: '/drugs',    icon: Pill,        label: 'Drug Checker',      sub: 'BioBERT · NLP',       model: 'BioBERT',  keyHint: '4', color: 'amber',  hex: '#ffb547' },
-  { to: '/risk',     icon: ShieldCheck, label: 'Risk Profile',      sub: 'AI Risk Engine',      model: 'ASCVD',    keyHint: '5', color: 'red',    hex: '#ff4d6d' },
-  { to: '/models',   icon: Cpu,         label: 'AI Model Hub',      sub: 'Qualcomm AI Hub',     model: '45 TOPS',  keyHint: '6', color: 'blue',   hex: '#4488ff' },
+  { to: '/',         icon: Activity,    label: 'Dashboard',         sub: 'Clinical Overview',   model: 'Live',     keyHint: '1', color: 'cyan',   hex: '#0066CC' },
+  { to: '/symptoms', icon: Brain,       label: 'Symptom AI',        sub: 'Phi-3.5 Mini · NPU',  model: 'LLM',      keyHint: '2', color: 'purple', hex: '#4F46E5' },
+  { to: '/imaging',  icon: ImageIcon,   label: 'Image Diagnostics', sub: 'ResNet-50 · Vision',  model: 'Vision',   keyHint: '3', color: 'green',  hex: '#00A693' },
+  { to: '/drugs',    icon: Pill,        label: 'Drug Checker',      sub: 'BioBERT · NLP',       model: 'BioBERT',  keyHint: '4', color: 'amber',  hex: '#D97706' },
+  { to: '/risk',     icon: ShieldCheck, label: 'Risk Profile',      sub: 'AI Risk Engine',      model: 'ASCVD',    keyHint: '5', color: 'red',    hex: '#EF4444' },
+  { to: '/models',   icon: Cpu,         label: 'AI Model Hub',      sub: 'Qualcomm AI Hub',     model: '45 TOPS',  keyHint: '6', color: 'blue',   hex: '#4F46E5' },
 ]
 
 export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
@@ -72,8 +72,8 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
                   className="nav-item-icon"
                   style={
                     isActive
-                      ? { color: '#020b18', background: hex, borderColor: hex, boxShadow: `0 0 12px ${hex}90` }
-                      : { color: hex, background: `${hex}18`, borderColor: `${hex}35` }
+                      ? { color: '#ffffff', background: hex, borderColor: hex, boxShadow: `0 2px 10px ${hex}55` }
+                      : { color: hex, background: `${hex}15`, borderColor: `${hex}30` }
                   }
                 >
                   <Icon size={16} />
@@ -107,7 +107,7 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
       <div className="npu-card">
         <div className="npu-card-header">
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-            <Zap size={13} color="var(--cyan)" />
+            <Zap size={13} color="var(--blue)" />
             <span style={{ fontSize: '0.78rem', fontWeight: 800, color: 'var(--txt-1)' }}>Hexagon NPU</span>
           </div>
           <span className="badge badge-green" style={{ fontSize: '0.62rem', padding: '0.08rem 0.42rem' }}>
@@ -143,7 +143,7 @@ export default function Sidebar({ isOpen, onToggle }: SidebarProps) {
       {/* ── Sub-Footer Hardware Build ── */}
       <div className="sidebar-footer-info">
         <span>Snapdragon X Elite</span>
-        <span className="font-mono" style={{ color: 'var(--cyan)' }}>v2.4</span>
+        <span className="font-mono" style={{ color: 'var(--blue)' }}>v2.4</span>
       </div>
     </aside>
   )

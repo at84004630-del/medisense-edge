@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation, useNavigate, Link } from 're
 import {
   Search, Command, Bell, Cpu, X, ChevronRight,
   Brain, ImageIcon, Pill, ShieldCheck, Activity,
-  Sparkles, PanelLeftClose, PanelLeftOpen
+  Sparkles, PanelLeftClose, PanelLeftOpen, Sun, Moon
 } from 'lucide-react'
 import Sidebar from './components/Sidebar'
 import NPUStatusBar from './components/NPUStatusBar'
@@ -14,6 +14,7 @@ import ImageDiagnostics from './pages/ImageDiagnostics'
 import DrugChecker from './pages/DrugChecker'
 import RiskProfile from './pages/RiskProfile'
 import AIModels from './pages/AIModels'
+import { ThemeProvider, useTheme } from './context/ThemeContext'
 import './App.css'
 
 const PAGE_TITLES: Record<string, { title: string; subtitle: string }> = {
@@ -99,7 +100,7 @@ function CommandPalette({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
     <div className="cmd-backdrop" onClick={onClose}>
       <div className="cmd-modal" onClick={e => e.stopPropagation()} onKeyDown={handleKeyDown}>
         <div className="cmd-search-row">
-          <Search size={18} color="var(--cyan)" />
+          <Search size={18} color="var(--blue)" />
           <input
             ref={inputRef}
             type="text"
@@ -146,7 +147,7 @@ function CommandPalette({ isOpen, onClose }: { isOpen: boolean; onClose: () => v
           <span><kbd>↑</kbd> <kbd>↓</kbd> to navigate</span>
           <span><kbd>↵</kbd> to select</span>
           <span><kbd>esc</kbd> to dismiss</span>
-          <span style={{ marginLeft: 'auto', color: 'var(--cyan)' }}>Snapdragon NPU Fast Index</span>
+          <span style={{ marginLeft: 'auto', color: 'var(--blue)' }}>Snapdragon NPU Fast Index</span>
         </div>
       </div>
     </div>
@@ -208,6 +209,7 @@ interface TopBarProps {
 function TopBar({ onOpenCommand, onToggleSidebar, sidebarOpen }: TopBarProps) {
   const { pathname } = useLocation()
   const navigate = useNavigate()
+  const { toggleTheme, isDark } = useTheme()
   const [showNotifications, setShowNotifications] = useState(false)
   const [showClinicianMenu, setShowClinicianMenu] = useState(false)
   const [activeRole, setActiveRole] = useState<RoleType>('attending')
@@ -217,12 +219,12 @@ function TopBar({ onOpenCommand, onToggleSidebar, sidebarOpen }: TopBarProps) {
 
   return (
     <header className="topbar">
-      {/* ── Left: Sidebar Slide Toggle + Compact Brand Mark + Breadcrumb ── */}
+      {/* ── Left: Sidebar Toggle + Brand + Breadcrumb ── */}
       <div className="topbar-left">
         <button
           className={`sidebar-toggle-btn ${sidebarOpen ? 'open' : 'closed'}`}
           onClick={onToggleSidebar}
-          title={sidebarOpen ? "Slide close sidebar (Ctrl+B or [)" : "Slide open sidebar (Ctrl+B or [)"}
+          title={sidebarOpen ? 'Close sidebar (Ctrl+B)' : 'Open sidebar (Ctrl+B)'}
           aria-label="Toggle navigation sidebar"
         >
           {sidebarOpen ? <PanelLeftClose size={18} /> : <PanelLeftOpen size={18} />}
@@ -241,10 +243,10 @@ function TopBar({ onOpenCommand, onToggleSidebar, sidebarOpen }: TopBarProps) {
         </div>
       </div>
 
-      {/* ── Center: Omnibar Command Search Trigger ── */}
+      {/* ── Center: Command Search ── */}
       <div className="topbar-center">
         <button className="topbar-search-trigger" onClick={onOpenCommand} title="Open Command Palette (Ctrl+K or /)">
-          <Search size={14} color="var(--cyan)" />
+          <Search size={14} color="var(--blue)" />
           <span className="topbar-search-text">Search symptoms, drugs, scans, risk models...</span>
           <span className="topbar-search-kbd">
             <Command size={10} style={{ display: 'inline' }} /> K
@@ -252,25 +254,42 @@ function TopBar({ onOpenCommand, onToggleSidebar, sidebarOpen }: TopBarProps) {
         </button>
       </div>
 
-      {/* ── Right: Quick Action, Telemetry, Notifications & Clinician ── */}
+      {/* ── Right: Actions + Theme Toggle + Clinician ── */}
       <div className="topbar-right">
+
+        {/* Mobile search button */}
+        <button className="mobile-search-btn" onClick={onOpenCommand} aria-label="Search">
+          <Search size={16} />
+        </button>
+
         {/* Quick Triage CTA */}
         <button
           className="topbar-action-pill"
           onClick={() => navigate('/symptoms')}
           title="Launch Symptom AI Copilot"
         >
-          <Sparkles size={13} color="var(--cyan)" />
+          <Sparkles size={13} color="var(--blue)" />
           <span>New Triage</span>
         </button>
 
-        {/* Snapdragon NPU hardware chip (Clickable -> Model Hub) */}
+        {/* Snapdragon NPU chip */}
         <Link to="/models" className="topbar-hw-chip" title="Qualcomm Snapdragon X Elite Hexagon NPU — View Benchmarks">
-          <Cpu size={14} color="var(--cyan)" />
+          <Cpu size={14} color="var(--blue)" />
           <span className="topbar-hw-title">Snapdragon NPU</span>
           <span className="status-dot live" />
           <span className="topbar-hw-val">45 TOPS</span>
         </Link>
+
+        {/* ── Theme Toggle ── */}
+        <button
+          className="theme-toggle"
+          onClick={toggleTheme}
+          title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          aria-label="Toggle theme"
+        >
+          <Sun size={16} className="icon-sun" />
+          <Moon size={16} className="icon-moon" />
+        </button>
 
         {/* Notifications */}
         <div style={{ position: 'relative' }}>
@@ -310,7 +329,7 @@ function TopBar({ onOpenCommand, onToggleSidebar, sidebarOpen }: TopBarProps) {
               <div className="notif-footer">
                 <span style={{ fontSize: '0.7rem', color: 'var(--txt-3)' }}>Encrypted local storage only</span>
                 <button
-                  style={{ background: 'transparent', border: 'none', color: 'var(--cyan)', fontSize: '0.72rem', cursor: 'pointer', fontWeight: 600 }}
+                  style={{ background: 'transparent', border: 'none', color: 'var(--blue)', fontSize: '0.72rem', cursor: 'pointer', fontWeight: 600 }}
                   onClick={() => setShowNotifications(false)}
                 >
                   Dismiss
@@ -320,7 +339,7 @@ function TopBar({ onOpenCommand, onToggleSidebar, sidebarOpen }: TopBarProps) {
           )}
         </div>
 
-        {/* ── Interactive Clinician Profile Pill & Dropdown Modal ── */}
+        {/* Clinician Profile */}
         <div style={{ position: 'relative' }}>
           <div
             className={`topbar-clinician ${showClinicianMenu ? 'active' : ''}`}
@@ -342,10 +361,8 @@ function TopBar({ onOpenCommand, onToggleSidebar, sidebarOpen }: TopBarProps) {
             </div>
           </div>
 
-          {/* Clinician Dropdown Modal */}
           {showClinicianMenu && (
             <div className="clinician-dropdown-modal" onClick={e => e.stopPropagation()}>
-              {/* Header card with doctor credentials */}
               <div className="clinician-modal-hd">
                 <div className="clinician-modal-avatar">
                   {profile.avatar}
@@ -357,7 +374,7 @@ function TopBar({ onOpenCommand, onToggleSidebar, sidebarOpen }: TopBarProps) {
                       {profile.name}
                     </h4>
                   </div>
-                  <p style={{ fontSize: '0.72rem', color: 'var(--cyan)', fontWeight: 600, margin: '0.15rem 0' }}>
+                  <p style={{ fontSize: '0.72rem', color: 'var(--blue)', fontWeight: 600, margin: '0.15rem 0' }}>
                     {profile.role}
                   </p>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginTop: '0.35rem' }}>
@@ -371,7 +388,6 @@ function TopBar({ onOpenCommand, onToggleSidebar, sidebarOpen }: TopBarProps) {
                 </div>
               </div>
 
-              {/* Clinical Role Switcher */}
               <div style={{ padding: '0.85rem 1rem', borderBottom: '1px solid var(--bdr-subtle)' }}>
                 <p style={{ fontSize: '0.68rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--txt-3)', letterSpacing: '0.08em', marginBottom: '0.5rem' }}>
                   Switch Security Role & Clearance
@@ -388,10 +404,10 @@ function TopBar({ onOpenCommand, onToggleSidebar, sidebarOpen }: TopBarProps) {
                       >
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                            <span style={{ fontSize: '0.78rem', fontWeight: 700, color: isSelected ? 'var(--cyan)' : 'var(--txt-1)' }}>
+                            <span style={{ fontSize: '0.78rem', fontWeight: 700, color: isSelected ? 'var(--blue)' : 'var(--txt-1)' }}>
                               {r.role}
                             </span>
-                            <span style={{ fontSize: '0.62rem', fontFamily: 'var(--mono)', color: isSelected ? 'var(--cyan)' : 'var(--txt-4)' }}>
+                            <span style={{ fontSize: '0.62rem', fontFamily: 'var(--mono)', color: isSelected ? 'var(--blue)' : 'var(--txt-4)' }}>
                               {r.level.split('·')[0]}
                             </span>
                           </div>
@@ -405,8 +421,7 @@ function TopBar({ onOpenCommand, onToggleSidebar, sidebarOpen }: TopBarProps) {
                 </div>
               </div>
 
-              {/* Hardware Security Telemetry */}
-              <div style={{ padding: '0.75rem 1rem', background: 'rgba(255, 255, 255, 0.02)', borderBottom: '1px solid var(--bdr-subtle)', fontSize: '0.7rem' }}>
+              <div style={{ padding: '0.75rem 1rem', borderBottom: '1px solid var(--bdr-subtle)', fontSize: '0.7rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.35rem' }}>
                   <span style={{ color: 'var(--txt-3)' }}>Keystore Isolation:</span>
                   <span style={{ color: 'var(--green)', fontWeight: 700 }}>Snapdragon TrustZone 🟢</span>
@@ -417,11 +432,10 @@ function TopBar({ onOpenCommand, onToggleSidebar, sidebarOpen }: TopBarProps) {
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <span style={{ color: 'var(--txt-3)' }}>Hardware Node:</span>
-                  <span style={{ color: 'var(--cyan)', fontFamily: 'var(--mono)' }}>Qualcomm Hexagon 45 TOPS</span>
+                  <span style={{ color: 'var(--blue)', fontFamily: 'var(--mono)' }}>Qualcomm Hexagon 45 TOPS</span>
                 </div>
               </div>
 
-              {/* Footer Actions */}
               <div style={{ padding: '0.75rem 1rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <button
                   className="btn btn-secondary btn-sm"
@@ -448,23 +462,45 @@ function TopBar({ onOpenCommand, onToggleSidebar, sidebarOpen }: TopBarProps) {
 function AppInner() {
   const [commandOpen, setCommandOpen] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('medisense_sidebar_open') !== 'false'
-    }
-    return true
+    if (typeof window === 'undefined') return true
+    // Default closed on mobile
+    if (window.innerWidth < 768) return false
+    return localStorage.getItem('medisense_sidebar_open') !== 'false'
   })
+
+  const isMobile = () => typeof window !== 'undefined' && window.innerWidth < 768
 
   const toggleSidebar = () => {
     setSidebarOpen(prev => {
       const next = !prev
-      if (typeof window !== 'undefined') {
+      if (!isMobile()) {
         localStorage.setItem('medisense_sidebar_open', String(next))
       }
       return next
     })
   }
 
-  // Global keyboard shortcuts: Cmd+K / Ctrl+K / '/' for command, Ctrl+B / '[' for sidebar
+  // Close sidebar on mobile when route changes
+  const location = useLocation()
+  useEffect(() => {
+    if (isMobile()) setSidebarOpen(false)
+  }, [location.pathname])
+
+  // Close sidebar on mobile resize to desktop
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 768) {
+        const saved = localStorage.getItem('medisense_sidebar_open')
+        setSidebarOpen(saved !== 'false')
+      } else {
+        setSidebarOpen(false)
+      }
+    }
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+
+  // Global keyboard shortcuts
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
@@ -487,7 +523,17 @@ function AppInner() {
 
   return (
     <div className={`app-layout ${sidebarOpen ? 'sidebar-expanded' : 'sidebar-collapsed'}`}>
+      {/* Mobile sidebar overlay — tap to close */}
+      {sidebarOpen && isMobile() && (
+        <div
+          className="sidebar-overlay visible"
+          onClick={() => setSidebarOpen(false)}
+          aria-label="Close sidebar"
+        />
+      )}
+
       <Sidebar isOpen={sidebarOpen} onToggle={toggleSidebar} />
+
       <div className="main-content">
         <TopBar
           onOpenCommand={() => setCommandOpen(true)}
@@ -511,10 +557,10 @@ function AppInner() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <AppInner />
-    </BrowserRouter>
+    <ThemeProvider>
+      <BrowserRouter>
+        <AppInner />
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }
-
-

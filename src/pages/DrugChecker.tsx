@@ -137,7 +137,7 @@ function checkPair(d1: string, d2: string): Interaction {
 
 const SEV_CFG: Record<string, { color: string; badge: string; icon: any; label: string; bg: string }> = {
   none: { color: 'var(--green)', badge: 'badge-green', icon: CheckCircle, label: 'Compatible', bg: 'rgba(0,229,160,0.05)' },
-  mild: { color: 'var(--cyan)', badge: 'badge-cyan', icon: CheckCircle, label: 'Mild', bg: 'rgba(0,212,255,0.05)' },
+  mild: { color: 'var(--blue)', badge: 'badge-cyan', icon: CheckCircle, label: 'Mild', bg: 'rgba(0,212,255,0.05)' },
   moderate: { color: 'var(--amber)', badge: 'badge-amber', icon: AlertTriangle, label: 'Moderate Interaction', bg: 'rgba(255,181,71,0.05)' },
   severe: { color: 'var(--red)', badge: 'badge-red', icon: XCircle, label: 'Severe / Avoid', bg: 'rgba(255,77,109,0.05)' },
 }
@@ -281,7 +281,7 @@ export default function DrugChecker() {
                 <div className="dropdown">
                   {filtered.slice(0, 6).map(d => (
                     <button key={d} className="dropdown-item" onClick={() => addDrug(d)}>
-                      <Plus size={13} color="var(--cyan)" /> {d}
+                      <Plus size={13} color="var(--blue)" /> {d}
                     </button>
                   ))}
                 </div>
@@ -331,8 +331,8 @@ export default function DrugChecker() {
           )}
 
           <div style={{
-            padding: '0.75rem', background: 'rgba(0,212,255,0.03)',
-            border: '1px solid rgba(0,212,255,0.15)', borderRadius: 'var(--r-md)',
+            padding: '0.75rem', background: 'rgba(0,102,204,0.04)',
+            border: '1px solid rgba(0,102,204,0.18)', borderRadius: 'var(--r-md)',
             fontSize: '0.74rem', color: 'var(--txt-3)'
           }}>
             🔒 <strong>Prescription Privacy:</strong> Your medication list is evaluated locally via BioBERT NLP without pinging external pharmacy databases.
@@ -403,7 +403,7 @@ export default function DrugChecker() {
               {/* Status Banner */}
               <div className="card glass-shine" style={{
                 background: severeCount > 0 ? 'rgba(255,77,109,0.06)' : 'rgba(0,229,160,0.06)',
-                borderColor: severeCount > 0 ? 'rgba(255,77,109,0.3)' : 'rgba(0,229,160,0.3)',
+                borderColor: severeCount > 0 ? 'rgba(255,77,109,0.3)' : 'rgba(16,185,129,0.20)',
                 padding: '0.875rem 1.125rem'
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>

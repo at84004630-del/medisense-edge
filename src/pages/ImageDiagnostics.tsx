@@ -292,10 +292,10 @@ export default function ImageDiagnostics() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.125rem' }}>
 
           {/* Quick Presets Notice Bar */}
-          <div className="card" style={{ padding: '0.75rem 1rem', background: 'rgba(0,212,255,0.03)', borderColor: 'rgba(0,212,255,0.2)' }}>
+          <div className="card" style={{ padding: '0.75rem 1rem', background: 'rgba(0,102,204,0.04)', borderColor: 'rgba(0,102,204,0.20)' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <span style={{ fontSize: '0.75rem', color: 'var(--txt-2)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                <Sparkles size={12} color="var(--cyan)" />
+                <Sparkles size={12} color="var(--blue)" />
                 <strong>1-Click Clinical Demos:</strong>
               </span>
               <div style={{ display: 'flex', gap: '0.35rem' }}>
@@ -320,14 +320,14 @@ export default function ImageDiagnostics() {
             onDrop={onDrop}
             onClick={() => !imgUrl && fileRef.current?.click()}
             style={{
-              border: `2px dashed ${drag ? 'var(--cyan)' : imgUrl ? 'var(--bdr-card)' : 'var(--bdr-subtle)'}`,
+              border: `2px dashed ${drag ? 'var(--blue)' : imgUrl ? 'var(--bdr-card)' : 'var(--bdr-subtle)'}`,
               borderRadius: 'var(--r-xl)',
               minHeight: 280,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               cursor: imgUrl ? 'default' : 'pointer',
               overflow: 'hidden',
               position: 'relative',
-              background: drag ? 'rgba(0,212,255,0.04)' : 'var(--bg-surface)',
+              background: drag ? 'rgba(0,102,204,0.05)' : 'var(--bg-surface)',
               transition: 'all var(--t-base)',
             }}
           >
@@ -351,7 +351,7 @@ export default function ImageDiagnostics() {
                       width: `${activeSample.bbox.w}%`,
                       height: `${activeSample.bbox.h}%`,
                       border: '2px solid rgba(0, 229, 160, 0.9)',
-                      background: 'radial-gradient(circle, rgba(0,229,160,0.3) 0%, rgba(0,212,255,0.1) 70%, transparent 100%)',
+                      background: 'radial-gradient(circle, rgba(16,185,129,0.20) 0%, rgba(0,102,204,0.10) 70%, transparent 100%)',
                       borderRadius: 'var(--r-sm)',
                       boxShadow: '0 0 15px rgba(0, 229, 160, 0.6)',
                       pointerEvents: 'none',
@@ -401,11 +401,11 @@ export default function ImageDiagnostics() {
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem', padding: '2rem', textAlign: 'center' }}>
                 <div style={{
                   width: 64, height: 64, borderRadius: 'var(--r-xl)',
-                  background: 'rgba(0,212,255,0.08)', border: '1px solid rgba(0,212,255,0.15)',
+                  background: 'rgba(0,102,204,0.08)', border: '1px solid rgba(0,102,204,0.18)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   animation: 'float 3s ease-in-out infinite',
                 }}>
-                  <Upload size={24} color="var(--cyan)" />
+                  <Upload size={24} color="var(--blue)" />
                 </div>
                 <div>
                   <p style={{ fontWeight: 700, color: 'var(--txt-1)', marginBottom: '0.25rem' }}>Drop medical scan or choose a demo above</p>
@@ -457,13 +457,13 @@ export default function ImageDiagnostics() {
           {/* Privacy & Hardware Metrics Box */}
           <div style={{
             padding: '0.875rem',
-            background: 'rgba(0,212,255,0.04)',
-            border: '1px solid rgba(0,212,255,0.15)',
+            background: 'rgba(0,102,204,0.05)',
+            border: '1px solid rgba(0,102,204,0.18)',
             borderRadius: 'var(--r-md)',
             display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem'
           }}>
             <div>
-              <p style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--cyan)', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+              <p style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--blue)', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
                 <Cpu size={14} /> Snapdragon Hexagon Tensor Processing
               </p>
               <p style={{ fontSize: '0.72rem', color: 'var(--txt-3)', marginTop: '2px' }}>
@@ -487,7 +487,7 @@ export default function ImageDiagnostics() {
                 </div>
                 <p className="empty-title">Ready for Vision Inference</p>
                 <p className="empty-sub">
-                  Target: <strong style={{ color: 'var(--cyan)' }}>{activeSample.title}</strong>. Click <strong style={{ color: 'var(--green)' }}>Analyze</strong> to trigger Qualcomm AI Hub {activeScan.model} running locally on the Hexagon NPU.
+                  Target: <strong style={{ color: 'var(--blue)' }}>{activeSample.title}</strong>. Click <strong style={{ color: 'var(--green)' }}>Analyze</strong> to trigger Qualcomm AI Hub {activeScan.model} running locally on the Hexagon NPU.
                 </p>
               </div>
             </div>
@@ -500,7 +500,7 @@ export default function ImageDiagnostics() {
                   <div className="pulse-ring pulse-ring-1" style={{ borderColor: 'rgba(0,229,160,0.5)' }} />
                   <div className="pulse-ring pulse-ring-2" style={{ borderColor: 'rgba(0,229,160,0.25)' }} />
                   <div className="pulse-ring pulse-ring-3" style={{ borderColor: 'rgba(0,229,160,0.1)' }} />
-                  <div className="pulse-center" style={{ background: 'rgba(0,229,160,0.12)', border: '1px solid rgba(0,229,160,0.3)' }}>
+                  <div className="pulse-center" style={{ background: 'rgba(0,229,160,0.12)', border: '1px solid rgba(16,185,129,0.20)' }}>
                     <ImageIcon size={20} color="var(--green)" />
                   </div>
                 </div>

@@ -40,7 +40,7 @@ const PRESETS: { label: string; icon: string; form: PatientForm }[] = [
 const STATUS_CFG: Record<string, { color: string; badge: string }> = {
   normal: { color: 'var(--green)', badge: 'badge-green' },
   elevated: { color: 'var(--amber)', badge: 'badge-amber' },
-  low: { color: 'var(--cyan)', badge: 'badge-cyan' },
+  low: { color: 'var(--blue)', badge: 'badge-cyan' },
   high: { color: 'var(--red)', badge: 'badge-red' },
 }
 
@@ -196,8 +196,8 @@ export default function RiskProfile() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.125rem' }}>
 
           {/* 1-Click Patient Presets */}
-          <div className="card" style={{ padding: '0.875rem', background: 'rgba(0,212,255,0.03)', borderColor: 'rgba(0,212,255,0.2)' }}>
-            <div style={{ fontSize: '0.74rem', fontWeight: 700, color: 'var(--cyan)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+          <div className="card" style={{ padding: '0.875rem', background: 'rgba(0,102,204,0.04)', borderColor: 'rgba(0,102,204,0.20)' }}>
+            <div style={{ fontSize: '0.74rem', fontWeight: 700, color: 'var(--blue)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
               <Sparkles size={12} /> 1-Click Patient Profiles:
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
@@ -341,8 +341,8 @@ export default function RiskProfile() {
           </div>
 
           <div style={{
-            padding: '0.75rem', background: 'rgba(0,212,255,0.03)',
-            border: '1px solid rgba(0,212,255,0.15)', borderRadius: 'var(--r-md)',
+            padding: '0.75rem', background: 'rgba(0,102,204,0.04)',
+            border: '1px solid rgba(0,102,204,0.18)', borderRadius: 'var(--r-md)',
             fontSize: '0.74rem', color: 'var(--txt-3)'
           }}>
             🔒 <strong>Biometric Isolation:</strong> Cardiovascular equations & ONNX models compute in hardware cache on your Snapdragon-powered HP PC.
@@ -417,7 +417,7 @@ export default function RiskProfile() {
             {/* Radar Chart */}
             <div className="card">
               <div className="section-title mb-2" style={{ fontSize: '0.88rem' }}>
-                <Activity size={14} color="var(--cyan)" /> Organ System Risk Radar
+                <Activity size={14} color="var(--blue)" /> Organ System Risk Radar
               </div>
               <ResponsiveContainer width="100%" height={210}>
                 <RadarChart data={computedMetrics.radar} cx="50%" cy="50%" outerRadius="75%">
@@ -425,8 +425,8 @@ export default function RiskProfile() {
                   <PolarAngleAxis dataKey="factor" tick={{ fill: 'var(--txt-2)', fontSize: 10 }} />
                   <Radar
                     dataKey="score"
-                    stroke="var(--cyan)"
-                    fill="rgba(0,212,255,0.2)"
+                    stroke="var(--blue)"
+                    fill="rgba(0,102,204,0.20)"
                     strokeWidth={2}
                     animationDuration={600}
                   />

@@ -535,7 +535,7 @@ export default function SymptomChecker() {
             <div style={{ marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid var(--bdr-subtle)' }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.45rem' }}>
                 <span style={{ fontSize: '0.72rem', color: 'var(--txt-3)', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                  <Sparkles size={11} color="var(--cyan)" /> Quick Voice Demos (Snapdragon Whisper):
+                  <Sparkles size={11} color="var(--blue)" /> Quick Voice Demos (Snapdragon Whisper):
                 </span>
                 {text && (
                   <button
@@ -568,7 +568,7 @@ export default function SymptomChecker() {
           {/* Quick Select Symptoms */}
           <div className="card">
             <div className="section-title mb-2" style={{ fontSize: '0.88rem' }}>
-              <CheckCircle size={14} color="var(--cyan)" /> Quick Select Symptoms
+              <CheckCircle size={14} color="var(--blue)" /> Quick Select Symptoms
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
               {SYMPTOMS.map(s => (
@@ -682,7 +682,7 @@ export default function SymptomChecker() {
                   <div className="pulse-ring pulse-ring-1" />
                   <div className="pulse-ring pulse-ring-2" />
                   <div className="pulse-ring pulse-ring-3" />
-                  <div className="pulse-center"><Brain size={20} color="var(--cyan)" /></div>
+                  <div className="pulse-center"><Brain size={20} color="var(--blue)" /></div>
                 </div>
                 <div>
                   <p style={{ fontWeight: 700, color: 'var(--txt-1)', textAlign: 'center' }}>
@@ -702,10 +702,10 @@ export default function SymptomChecker() {
           {results && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.875rem' }}>
               {/* Stats Bar with Audio Readout */}
-              <div className="card glass-shine" style={{ background: 'rgba(0,212,255,0.04)', borderColor: 'rgba(0,212,255,0.2)' }}>
+              <div className="card glass-shine" style={{ background: 'rgba(0,102,204,0.05)', borderColor: 'rgba(0,102,204,0.20)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <Zap size={16} color="var(--cyan)" />
+                    <Zap size={16} color="var(--blue)" />
                     <div>
                       <p style={{ fontWeight: 700, color: 'var(--txt-1)', fontSize: '0.875rem', lineHeight: 1.2 }}>
                         Analysis Complete

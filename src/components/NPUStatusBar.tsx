@@ -17,8 +17,8 @@ export default function NPUStatusBar() {
 
   return (
     <div className="npu-float">
-      <Cpu size={13} color="var(--cyan)" />
-      <span style={{ color: 'var(--cyan)', fontWeight: 700 }}>NPU</span>
+      <Cpu size={13} color="var(--blue)" />
+      <span style={{ color: 'var(--blue)', fontWeight: 700 }}>NPU</span>
       <span className="status-dot live" />
       <span>{npu.toFixed(0)}%</span>
 

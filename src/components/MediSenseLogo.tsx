@@ -40,15 +40,15 @@ export default function MediSenseLogo({
           flexShrink: 0,
         }}
       >
-        {/* Ambient neon backglow */}
+        {/* Ambient brand backglow */}
         <div
           style={{
             position: 'absolute',
             inset: -4,
             borderRadius: '35%',
-            background: 'radial-gradient(circle, rgba(0, 212, 255, 0.45) 0%, rgba(124, 111, 240, 0.25) 50%, transparent 75%)',
+            background: 'radial-gradient(circle, rgba(0, 102, 204, 0.22) 0%, rgba(79, 70, 229, 0.12) 55%, transparent 75%)',
             filter: 'blur(6px)',
-            opacity: 0.85,
+            opacity: 0.9,
             pointerEvents: 'none',
           }}
         />
@@ -62,31 +62,31 @@ export default function MediSenseLogo({
           style={{
             position: 'relative',
             zIndex: 2,
-            filter: 'drop-shadow(0 4px 10px rgba(0, 212, 255, 0.4))',
+            filter: 'drop-shadow(0 4px 12px rgba(0, 102, 204, 0.30))',
             transition: 'transform var(--t-spring)',
           }}
         >
           <defs>
-            {/* Gradients */}
+            {/* Light Theme Gradients */}
             <linearGradient id="msHexGrad" x1="10" y1="10" x2="90" y2="90" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#00d4ff" />
-              <stop offset="50%" stopColor="#7c6ff0" />
-              <stop offset="100%" stopColor="#00e5a0" />
+              <stop offset="0%" stopColor="#0066CC" />
+              <stop offset="50%" stopColor="#4F46E5" />
+              <stop offset="100%" stopColor="#00A693" />
             </linearGradient>
 
             <linearGradient id="msCrossGrad" x1="30" y1="30" x2="70" y2="70" gradientUnits="userSpaceOnUse">
               <stop offset="0%" stopColor="#ffffff" />
-              <stop offset="100%" stopColor="#c8f5ff" />
+              <stop offset="100%" stopColor="#dbeafe" />
             </linearGradient>
 
             <linearGradient id="msPulseGrad" x1="20" y1="50" x2="80" y2="50" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#00d4ff" />
-              <stop offset="50%" stopColor="#00e5a0" />
-              <stop offset="100%" stopColor="#7c6ff0" />
+              <stop offset="0%" stopColor="#0066CC" />
+              <stop offset="50%" stopColor="#00A693" />
+              <stop offset="100%" stopColor="#4F46E5" />
             </linearGradient>
 
             <filter id="msGlowFilter" x="-20%" y="-20%" width="140%" height="140%">
-              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feGaussianBlur stdDeviation="2.5" result="blur" />
               <feMerge>
                 <feMergeNode in="blur" />
                 <feMergeNode in="SourceGraphic" />
@@ -97,7 +97,7 @@ export default function MediSenseLogo({
           {/* Outer Snapdragon Hexagon NPU Ring */}
           <polygon
             points="50,6 88,28 88,72 50,94 12,72 12,28"
-            fill="rgba(4, 16, 34, 0.9)"
+            fill="rgba(0, 102, 204, 0.06)"
             stroke="url(#msHexGrad)"
             strokeWidth="4"
             strokeLinejoin="round"
@@ -107,7 +107,7 @@ export default function MediSenseLogo({
           <polygon
             points="50,16 80,33 80,67 50,84 20,67 20,33"
             fill="none"
-            stroke="rgba(0, 212, 255, 0.22)"
+            stroke="rgba(0, 102, 204, 0.18)"
             strokeWidth="1.5"
             strokeDasharray="4 2"
           />
@@ -146,15 +146,15 @@ export default function MediSenseLogo({
           />
 
           {/* Hexagon Corner Neural Nodes (Silicon Pins) */}
-          <circle cx="50" cy="6" r="3" fill="#00d4ff" />
-          <circle cx="88" cy="28" r="3" fill="#7c6ff0" />
-          <circle cx="88" cy="72" r="3" fill="#00e5a0" />
-          <circle cx="50" cy="94" r="3" fill="#00d4ff" />
-          <circle cx="12" cy="72" r="3" fill="#7c6ff0" />
-          <circle cx="12" cy="28" r="3" fill="#00e5a0" />
+          <circle cx="50" cy="6" r="3" fill="#0066CC" />
+          <circle cx="88" cy="28" r="3" fill="#4F46E5" />
+          <circle cx="88" cy="72" r="3" fill="#00A693" />
+          <circle cx="50" cy="94" r="3" fill="#0066CC" />
+          <circle cx="12" cy="72" r="3" fill="#4F46E5" />
+          <circle cx="12" cy="28" r="3" fill="#00A693" />
 
           {/* Center Glowing Synapse Core */}
-          <circle cx="50" cy="50" r="3" fill="#ffffff" filter="url(#msGlowFilter)" />
+          <circle cx="50" cy="50" r="3" fill="#0066CC" filter="url(#msGlowFilter)" />
         </svg>
       </div>
 
@@ -166,13 +166,13 @@ export default function MediSenseLogo({
               fontFamily: 'var(--font-display, "Outfit", sans-serif)',
               fontSize: titleSize,
               fontWeight: 800,
-              color: 'var(--txt-1, #f3f8fd)',
+              color: 'var(--txt-1, #0f172a)',
               letterSpacing: '-0.025em',
             }}
           >
             Medi<span
               style={{
-                background: 'linear-gradient(135deg, #00d4ff 0%, #7c6ff0 100%)',
+                background: 'linear-gradient(135deg, #0066CC 0%, #4F46E5 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 fontWeight: 800,
@@ -192,10 +192,9 @@ export default function MediSenseLogo({
                 textTransform: 'uppercase',
                 padding: '0.15rem 0.45rem',
                 borderRadius: '9999px',
-                background: 'linear-gradient(135deg, rgba(0, 212, 255, 0.18) 0%, rgba(124, 111, 240, 0.22) 100%)',
-                border: '1px solid rgba(0, 212, 255, 0.4)',
-                color: 'var(--cyan, #00d4ff)',
-                boxShadow: '0 0 10px rgba(0, 212, 255, 0.2)',
+                background: 'linear-gradient(135deg, rgba(0,102,204,0.10) 0%, rgba(79,70,229,0.13) 100%)',
+                border: '1px solid rgba(0, 102, 204, 0.32)',
+                color: '#0066CC',
                 fontFamily: 'var(--mono, monospace)',
               }}
             >
@@ -208,7 +207,7 @@ export default function MediSenseLogo({
           <span
             style={{
               fontSize: subSize,
-              color: 'var(--txt-3, #52718e)',
+              color: 'var(--txt-3, #64748b)',
               fontWeight: 600,
               letterSpacing: '0.04em',
               textTransform: 'uppercase',
